@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
+
+//warna
+$blue: #1890ff;
+$soft-blue: #142f48;
+$black: #000000;
+$background: #091725;
+$white: #ffffff;
+$dark-blue: #091e32;
+$red: #ff0000;
+$grey: #777575;
+
+
+// font
+$font: "Open Sans", sans-serif;
+
+//button
+$button:#0a6a93;
+
+// Font Weight
+$thin: 300;
+$reguler: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$black: 900;
+
+// Font Size
+$xbig: 4.6rem;
+$big: 3rem;
+$xxl: 2.8rem;
+$xl: 2.6rem;
+$lg: 2.4rem;
+$md: 2.2rem;
+$rg: 2rem;
+$sm: 1.8rem;
+$xs: 1.6rem;
+$xxs: 1.4rem;
+$xxxs: 1.2rem;
+$xxxxs: 0.8rem;
+$xxxxxs: 0.6rem;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $white;
+  background-color: $background;
+}
+
+.wallet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  background-color: $dark-blue;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    margin: 20px 20px;
+    text-align: center;
+  }
+
+  button {
+    background-color: $button;
+    align-items: center;
+    color: $white;
+    padding: 10px 30px;
+    border: none;
+    font-size: $xxxs;
+    border-radius: 8px;
+  }
+}
+
+.portfolio {
+  max-width: 100%;
+  width: 95%;
+  margin: 0 auto;
+  padding: 20px;
+
+  .title{
+    height: 20px;
+    margin: 20px 0px;
+   // width: 400px;
+    h2, .network-info {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    h2{
+      font-size: $sm;
+      font-weight: bold;
+    }
+    .network-info{
+      padding: 6px 20px;
+      border-radius: 5px;
+      background-color: $soft-blue;
+    }
+    .accounts-info{
+      float: right;
+      padding: 6px 20px;
+      border: $soft-blue 2px solid;
+      border-radius: 20px;
+      background-color: transparent;
+    // display: flex;
+    // justify-content: flex-end;
+    // align-items: flex-start;
+      .account{
+        width: auto;
+      } 
+    }
+  }
+
+ .portfolio-value{
+    position: relative;
+    margin: 90px 30px 40px 0px;
+  .label-net{
+    font-size: $xxxxxs;
+    position: relative;
+    top: 3px;
+    opacity: 60%;
+  }
+
+  .value-net{
+    font-size: $sm;
+    font-weight: $semi-bold ;
+    position: relative;
+  }
+  }
+
+  .tab{
+    background-color: $dark-blue;
+    align-items: center;
+    padding: 50px 50px 300px 50px;
+    height: 600px;
+    border-radius: 25px;
+    margin-top: 10px auto;
+    .tabs{
+      background-color: $soft-blue;
+      color: $white;
+      width: 220px;
+      display: flex;
+      font-size: $xxxs;
+      border-radius: 20px;
+      align-items: flex-start;
+      margin-left: auto; /* Mengatur posisi elemen ke sebelah kanan */
+      margin-bottom: 20px;
+    
+      button{
+        border-style: none;
+        background-color: transparent;
+        color: $white;
+        width: 110px;
+        margin: 2px 4px;
+        padding: 8px 10px;
+      }
+    
+      button:focus{
+        border-radius: 20px;
+        padding: 8px 30px 8px 30px;
+        background-color: $button;
+        color: $white;
+        border: none;
+      }
+   
+    }
+    .nfts {
+      background-color: $soft-blue;
+      width: 200px;
+      height: 250px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    
+      img{
+        padding: 10px;
+        width: 180px;
+        height: 200px;
+        object-fit: contain;
+      }
+
+      .name{
+        font-size: $xxxxs;
+        opacity: 60%;
+      }
+    
+      p{
+        text-align: center;
+        margin: 4px 0px;
+        font-weight: $bold;
+      }
+    }
+    
+
+   table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    tr{
+      width: 90%;
+    }
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      font-weight: 700;
+    }
+
+    td {
+      &:first-child {
+        font-weight: 700;
+      }
+
+      &:last-child {
+        font-weight: 700;
+        color: $white;
+      }
+    }
+  }
+  }
+  .error {
+    color: red;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .icons{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+  
+  .social-icons {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    left: 5px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .social-icons a {
+    color: $white;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 50%;
+  }
+  
+  .social-icons i {
+    color: $white;
+   // background-color: $white;
+    font-size: 18px;
+  }
+}
+
+}
