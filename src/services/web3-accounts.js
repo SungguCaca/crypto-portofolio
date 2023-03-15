@@ -34,13 +34,35 @@ const getAccounts = async () => {
 const getNetwork = async () => {
   const web3 = await initWeb3();
   const network = await web3.eth.net.getNetworkType();
+  
   return network;
 };
 
-const getSupportedNetworks = async () => {
+const getAllNetworks = async () => {
   const web3 = await initWeb3();
-  const networks = await web3.eth.net.getSupportedNetworks();
-  return networks;
-}
+  const networkId = await web3.eth.net.getId();
+  return [getNetworkName(networkId)];
+};
 
-export { getAccounts, getNetwork, getSupportedNetworks };
+const getNetworkName = (id) => {
+  switch (id) {
+    case 1:
+      return "Mainnet";
+    case 2:
+      return "Morden";
+    case 3:
+      return "Ropsten";
+    case 4:
+      return "Rinkeby";
+    case 5:
+      return "Goerli";
+    case 42:
+      return "Kovan";
+    default:
+      return `Unknown network ID ${id}`;
+  }
+};
+
+
+
+export { getAccounts, getNetwork, getAllNetworks };

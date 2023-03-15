@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getPortfolioData } from "../services/covalent";
-import { getNetwork, getAccounts } from "../services/web3-accounts";
-import Footer from './Footer';
+import { getNetwork, getAccounts, getAllNetworks } from "../services/web3-accounts";
+import Footer from "./Footer";
 import "../styles/portfolio.scss";
 
 function Portfolio() {
   const [portfolioData, setPortfolioData] = useState([]);
   const [error, setError] = useState(null);
-  const [network, setNetwork] = useState("");
+  const [network, setNetwork] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [tab, setTab] = useState("tokens");
 
@@ -21,7 +21,7 @@ function Portfolio() {
         console.error(error);
         setError("Failed to fetch portfolio data.");
       }
-    }    
+    }
 
     fetchData();
   }, []);
@@ -29,23 +29,23 @@ function Portfolio() {
   useEffect(() => {
     async function fetchNetwork() {
       try {
-        const networkName = await getNetwork();
-        setNetwork(networkName);
+        const networkList = await getAllNetworks();
+        setNetwork(networkList);
+        console.log(network);
       } catch (error) {
         console.error(error);
-        setNetwork("");
+        setNetwork([]);
       }
-    }
-
+    }    
     fetchNetwork();
   }, []);
+  
 
   useEffect(() => {
     async function fetchAccounts() {
       try {
         const accountsList = await getAccounts();
         setAccounts(accountsList);
-        console.log(accounts)
       } catch (error) {
         console.error(error);
         setAccounts([]);
@@ -73,22 +73,32 @@ function Portfolio() {
       </>
     );
 
-
   return (
     <div className="portfolio">
       <div className="title">
         <h2>Portfolio</h2>
+        
         <div className="network-info">
-          {network && <span className="network">{network}</span>}
+          {network.length > 0 ? (
+            <ul>
+              {network.map((network) => (
+                <li key={network}>{network}</li>
+              ))}
+            </ul>
+          ) : (
+            <span>No network detected</span>
+          )}
         </div>
 
-       <div className="accounts-info">
-        {accounts.length > 0 && (
-          <span className="account">{`${accounts.substring(0, 6)}...${accounts.substring(accounts.length-6)}`}</span>
-        )}
-      </div>    
-    </div>
-     
+        <div className="accounts-info">
+          {accounts.length > 0 && (
+            <span className="account">{`${accounts.substring(
+              0,
+              6
+            )}...${accounts.substring(accounts.length - 6)}`}</span>
+          )}
+        </div>
+      </div>
 
       <div className="portfolio-value">
         <div className="label-net">Net Worth</div>
@@ -99,7 +109,7 @@ function Portfolio() {
             .toFixed(2)}
         </div>
       </div>
-      
+
       <div className="tab">
         <h3>Assets</h3>
         <div className="tabs">
@@ -136,15 +146,15 @@ function Portfolio() {
         )}
         {tab === "nfts" && (
           <div className="nfts">
-            <img src="../images/profil.jpg" alt="My NFT Collection"/>
+            <img src="../images/profil.jpg" alt="My NFT Collection" />
             <span className="name">Teykan Tribe</span>
             <p>Teykan #16</p>
-          </div>        
+          </div>
         )}
       </div>
 
       <Footer />
-    </div>  
+    </div>
   );
 }
 

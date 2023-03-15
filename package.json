@@ -14,7 +14,6 @@
     "axios": "^1.3.4",
     "covalent-api": "^1.0.6",
     "ethers": "^6.1.0",
-    "font-awesome": "^4.7.0",
     "metamask": "^0.0.1-security",
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
